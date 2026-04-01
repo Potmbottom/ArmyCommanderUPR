@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e673a2105c49bf847a776f237c086f8f, type: 3}
+  m_Name: LevelConfig
+  m_EditorClassIdentifier: 
+  Levels:
+  - LevelPrefab: {fileID: 662265987779473327, guid: 5d985d70438a77c42a27269e833342e6,
+      type: 3}
+    UpgradeCostGold: 10
+    BarrackSoldierCostSilver: 1
+    BarrackVeteranCostSilver: 10
+    BarrackMasterCostSilver: 15
+    InitialSilver: 1
+    BarrackTroopIdOverrides:
+    - TroopType: 1
+      IdOverride: 3
+    - TroopType: 2
+      IdOverride: 4
+    - TroopType: 3
+      IdOverride: 5
+  - LevelPrefab: {fileID: 662265987779473327, guid: a37e6c5fe1e941045906d413a958eb65,
+      type: 3}
+    UpgradeCostGold: 20
+    BarrackSoldierCostSilver: 1
+    BarrackVeteranCostSilver: 10
+    BarrackMasterCostSilver: 15
+    InitialSilver: 1
+    BarrackTroopIdOverrides:
+    - TroopType: 1
+      IdOverride: 3
+    - TroopType: 2
+      IdOverride: 4
+    - TroopType: 3
+      IdOverride: 5
+  - LevelPrefab: {fileID: 662265987779473327, guid: 4234beab83e2c25468ef1a2285a3862f,
+      type: 3}
+    UpgradeCostGold: 30
+    BarrackSoldierCostSilver: 1
+    BarrackVeteranCostSilver: 10
+    BarrackMasterCostSilver: 15
+    InitialSilver: 1
+    BarrackTroopIdOverrides:
+    - TroopType: 1
+      IdOverride: 3
+    - TroopType: 2
+      IdOverride: 4
+    - TroopType: 3
+      IdOverride: 5

@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98af8bef4b8e3e5488e54e03907914f1, type: 3}
+  m_Name: TroopsConfig
+  m_EditorClassIdentifier: 
+  Troops:
+  - Index: 0
+    TroopType: 1
+    Prefab: {fileID: 1436747023353800812, guid: f6505ad209e1c2446abca52e63aaedd3,
+      type: 3}
+    MoveSpeed: 5
+    Health: 100
+    AggressiveRange: 20
+    AttackRange: 10
+    AttackSpeed: 1
+    SpawnSpeed: 0.5
+    ProjectileIndex: 0
+  - Index: 1
+    TroopType: 2
+    Prefab: {fileID: 1436747023353800812, guid: a85c81faf306a9a43bef2d01d7b8f3ee,
+      type: 3}
+    MoveSpeed: 5
+    Health: 100
+    AggressiveRange: 20
+    AttackRange: 15
+    AttackSpeed: 0.75
+    SpawnSpeed: 1
+    ProjectileIndex: 1
+  - Index: 2
+    TroopType: 3
+    Prefab: {fileID: 1436747023353800812, guid: 6a1a57e2b912cc24385a1ec2549fbc51,
+      type: 3}
+    MoveSpeed: 5
+    Health: 100
+    AggressiveRange: 22
+    AttackRange: 20
+    AttackSpeed: 0.5
+    SpawnSpeed: 1
+    ProjectileIndex: 2
+  - Index: 3
+    TroopType: 1
+    Prefab: {fileID: 1436747023353800812, guid: 29fbd67f01a87ed468f3189f892dd2b6,
+      type: 3}
+    MoveSpeed: 7
+    Health: 100
+    AggressiveRange: 100
+    AttackRange: 10
+    AttackSpeed: 1
+    SpawnSpeed: 1
+    ProjectileIndex: 0
+  - Index: 4
+    TroopType: 2
+    Prefab: {fileID: 1436747023353800812, guid: 30f3a082e273450488a805389d0ad7fe,
+      type: 3}
+    MoveSpeed: 10
+    Health: 100
+    AggressiveRange: 100
+    AttackRange: 15
+    AttackSpeed: 0.75
+    SpawnSpeed: 1
+    ProjectileIndex: 1
+  - Index: 5
+    TroopType: 3
+    Prefab: {fileID: 1436747023353800812, guid: 446300ec8ab9c4a40af3ffe16cd31fca,
+      type: 3}
+    MoveSpeed: 10
+    Health: 100
+    AggressiveRange: 100
+    AttackRange: 20
+    AttackSpeed: 0.5
+    SpawnSpeed: 1
+    ProjectileIndex: 2

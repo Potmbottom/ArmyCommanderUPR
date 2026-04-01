@@ -1,0 +1,58 @@
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+[Uu]ser[Ss]ettings/
+
+# Addressables / CCD / runtime generated data
+Assets/AddressableAssetsData/*/*.bin*
+Assets/StreamingAssets/aa.meta
+Assets/StreamingAssets/aa/
+
+# Visual Studio / Rider / JetBrains
+.vs/
+.vscode/
+.idea/
+*.sln
+*.csproj
+*.unityproj
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Unity autotests
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Build artifacts and installers
+*.apk
+*.aab
+*.ipa
+*.exe
+*.msi
+*.app
+
+# Crash and profiling
+sysinfo.txt
+*.stacktrace
+*.dmp
+*.trace
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+

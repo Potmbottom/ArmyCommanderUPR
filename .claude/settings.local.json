@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(for f:*)",
+      "Bash(do)",
+      "Bash(sed -i 's/TroopBaseModel/TroopBasePModel/g; s/ProjectileModel/ProjectilePModel/g' \"$f\")",
+      "Bash(done)",
+      "Bash(xargs grep:*)",
+      "Bash(grep -A 5 \"class.*Control.*:\" \"S:/git/ArmyCommander/Assets/Scripts/Controls\"/*.cs)"
+    ]
+  }
+}
