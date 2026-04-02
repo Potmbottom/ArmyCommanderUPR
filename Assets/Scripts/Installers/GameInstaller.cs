@@ -32,8 +32,8 @@ namespace ArmyCommander
             builder.RegisterEntryPoint<SpawnService>();
             builder.RegisterEntryPoint<AIService>();
             builder.RegisterEntryPoint<BarrackService>().AsSelf();
-            builder.RegisterEntryPoint<ProjectileService>();
             builder.RegisterEntryPoint<TransformService>();
+            builder.RegisterEntryPoint<ProjectileService>();
             builder.Register<ResourceService>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
             builder.Register<UIService>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
             builder.Register<ArmyUpgradeService>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();

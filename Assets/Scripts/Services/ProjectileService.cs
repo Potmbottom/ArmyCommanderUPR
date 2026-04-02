@@ -134,7 +134,6 @@ namespace ArmyCommander
 
                 _projectileLifeTimers.TryAdd(projectile, 0f);
                 var projData = _projectileConfig.GetData(projectile.DataIndex);
-                MoveProjectile(projectile, projData);
                 var troopHit = CheckTroopCollision(projectile, projData.ColliderRadius);
                 if (troopHit != null)
                 {
@@ -165,12 +164,6 @@ namespace ArmyCommander
                 _field.RemoveProjectile(p);
                 _projectileLifeTimers.Remove(p);
             }
-        }
-
-        private static void MoveProjectile(IProjectilePModel projectile, ProjectileDataModel data)
-        {
-            var step = data.MoveSpeed * Time.deltaTime;
-            projectile.SetPosition(projectile.Position + projectile.Direction * step);
         }
 
         private ITroopPModel CheckTroopCollision(IProjectilePModel projectile, float colliderRadius)

@@ -327,7 +327,8 @@ Private subjects exposed as Observable: OnShowBuildPopup, OnHideBuildPopup, OnBu
     - Allied shooters target nearest enemy troop
     - Enemy shooters target nearest between allied troop and unique Player entity (if Player is alive)
     - Creates projectile in FieldPModel toward chosen target position
-  - Projectiles: move each projectile by fixed `Direction` and speed, manual collision check against opposite-team cache only
+  - Projectiles: resolves collision candidates against opposite-team cache, applies damage, and performs lifetime cleanup
+  - Does not write projectile movement transforms (movement is owned by `TransformService`)
   - Collision/target nearest checks use squared distance comparisons (no sqrt) with an AABB prefilter before narrow-phase check
   - On hit:
     - Damage enemy troop (existing path), or
@@ -336,10 +337,11 @@ Private subjects exposed as Observable: OnShowBuildPopup, OnHideBuildPopup, OnBu
   - Per-projectile lifetime timer: if alive time reaches `ProjectileDataModel.LifeTime`, RemoveProjectile from FieldPModel
 
 ### TransformService (ITickable)
-- Tick: per troop, calculates XZ direction to TargetPosition, sets Velocity on model
+- Tick: single movement entry for gameplay transforms
+  - Troops: calculates XZ direction to TargetPosition, sets Velocity on model
   - Stop epsilon is evaluated on XZ plane (ignores Y)
   - Idle/Attack/Dead troops get zero velocity
-  - Projectile movement handled by ProjectileService
+  - Projectiles: applies per-tick position movement from projectile direction/speed for active projectiles
 
 ### ResourceService
 - Listens to FieldPModel.OnTroopRemoved
@@ -400,8 +402,8 @@ Private subjects exposed as Observable: OnShowBuildPopup, OnHideBuildPopup, OnBu
 2. SpawnService (drives ProjectileControl.Tick)
 3. AIService
 4. BarrackService
-5. ProjectileService
-6. TransformService
+5. TransformService
+6. ProjectileService
 
 ## Fixed Tick Execution Order (IFixedTickable, defined by GameInstaller bind order)
 1. SpawnService (drives TroopControl.FixedTick)

@@ -13,17 +13,25 @@ namespace ArmyCommander
 
         private IFieldPModel _field;
         private TroopsConfig _config;
+        private ProjectileConfig _projectileConfig;
 
         private readonly CompositeDisposable _disposables = new();
 
         [Inject]
-        public void SetDependency(IFieldPModel field, TroopsConfig config)
+        public void SetDependency(IFieldPModel field, TroopsConfig config, ProjectileConfig projectileConfig)
         {
             _field = field;
             _config = config;
+            _projectileConfig = projectileConfig;
         }
 
         public void Tick()
+        {
+            TickTroops();
+            TickProjectiles();
+        }
+
+        private void TickTroops()
         {
             foreach (var troop in _field.Troops)
             {
@@ -47,6 +55,24 @@ namespace ArmyCommander
 
                 troop.SetVelocity(dir.normalized * data.MoveSpeed);
             }
+        }
+
+        private void TickProjectiles()
+        {
+            foreach (var projectile in _field.Projectiles)
+            {
+                if (projectile.State != ProjectileState.Active)
+                    continue;
+
+                var data = _projectileConfig.GetData(projectile.DataIndex);
+                MoveProjectile(projectile, data);
+            }
+        }
+
+        private static void MoveProjectile(IProjectilePModel projectile, ProjectileDataModel data)
+        {
+            var step = data.MoveSpeed * Time.deltaTime;
+            projectile.SetPosition(projectile.Position + projectile.Direction * step);
         }
 
         public void Dispose() => _disposables.Dispose();

@@ -230,3 +230,11 @@ Details and temporary experiments are intentionally removed.
   - added `OnHealthChanged` subscription to `Disposables` so pooled release/destroy always unsubscribes callback and prevents stale calls against destroyed visual references.
 - Updated `Design_docs/Systems.md` `TroopControl` contract with damage-VFX lifetime/null-safety rules.
 
+- Implemented projectile movement ownership split between services with no direct service coupling:
+  - moved projectile position-step logic (`MoveSpeed * deltaTime` along projectile `Direction`) from `ProjectileService` into private `TransformService` movement flow;
+  - kept `ProjectileService` focused on projectile gameplay logic only: firing cadence, target/collision checks, damage application, and lifetime-based removal.
+- Preserved the "no public methods on services" rule:
+  - no new public API was added to `TransformService`; projectile movement runs only inside its internal tick path.
+- Updated runtime tick registration order in `GameInstaller` and documented it in `Design_docs/Systems.md`:
+  - `TransformService` now ticks before `ProjectileService` so projectile movement happens before collision/lifetime resolution in frame update flow.
+
