@@ -33,6 +33,29 @@ To complete a level, collect gold from combat and spend it at the army upgrade p
 
 ## Architecture Pattern
 
+## Architecture
+
+```mermaid
+flowchart TD
+    MODEL["📦 MODEL\nConfigs · DataModels"]
+    PMODEL["🔄 PRESENTATION MODEL\nReactive state — IFieldPModel · IPlayerPModel\nIResourcePModel · IUIModel · IBarrackSlotPModel\nITrainingFieldPModel · IArmyUpgradePModel"]
+    SERVICE["⚙️ SERVICE\nAIService · BarrackService · ProjectileService\nTransformService · SpawnService · ResourceService\nUIService · ArmyUpgradeService · InputService"]
+    CONTROL["🎮 CONTROL  MonoBehaviour Views\nPlayerControl · TroopControl · ProjectileControl\nBarrackSlotControl · UIControl · ..."]
+
+    MODEL      -->|"read config data"| SERVICE
+    SERVICE    -->|"write state"| PMODEL
+    PMODEL     -->|"observe / bind"| CONTROL
+    CONTROL    -->|"user events"| PMODEL
+
+    style MODEL   fill:#E8F5E9,stroke:#66BB6A,color:#1B5E20
+    style PMODEL  fill:#FFF9C4,stroke:#F9A825,color:#4E342E
+    style SERVICE fill:#E3F2FD,stroke:#1E88E5,color:#0D47A1
+    style CONTROL fill:#FCE4EC,stroke:#E91E63,color:#880E4F
+```
+
+
+
+
 The project uses **MVVM-inspired layered architecture** with strict boundaries:
 
 - `Controls` (View adapters): MonoBehaviours bound to one PresentationModel interface.
