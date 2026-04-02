@@ -20,6 +20,7 @@ To complete a level, collect gold from combat and spend it at the army upgrade p
 
 - Android build is available in `AndroidAPK`.
 - Touchscreen control uses a virtual joystick.
+- In Unity Editor, start play mode from the `Boot` scene.
 
 ## Technologies
 
@@ -59,6 +60,16 @@ The game avoids heavy "god classes" by splitting logic into focused services:
 - `UIService` -> UI-facing decisions and model updates.
 
 This improves maintainability, testability, and hot-path optimization control.
+
+## Pooling
+
+The project uses object pooling for all frequently spawned runtime entities:
+
+- Troops use pooling.
+- Projectiles use pooling.
+- Resource drops use pooling.
+
+Pooling reduces runtime allocations/GC spikes and avoids instantiate/destroy overhead during combat-heavy gameplay.
 
 ## Optimization: Single Tick Source
 
