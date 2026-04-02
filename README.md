@@ -70,6 +70,37 @@ Instead of many `Update()` methods distributed across files, gameplay simulation
 
 This keeps execution order deterministic and reduces update-order bugs.
 
+## Performance Notes (Hot Paths)
+
+Most expensive runtime calculations are in `AIService` and `ProjectileService`.
+
+- `AIService`:
+  - Per troop, nearest-target search is linear over candidate targets.
+  - Typical complexity per tick is `O(T * E)` (allied-to-enemy checks) plus enemy-side target checks.
+  - Uses squared distance math (`sqrMagnitude`) to avoid `sqrt` cost in hot loops.
+- `ProjectileService`:
+  - Attack timer updates are linear in active attackers: `O(A)`.
+  - Projectile update/collision path is approximately `O(P * C)` where `P` is active projectiles and `C` is opposite-team candidate targets.
+  - Uses team caches + AABB prefilter + squared distance checks to reduce constant factors.
+
+### Why No Physics Colliders for Projectile Hits
+
+- Projectile hit checks are performed in code, not via per-projectile physics collider interactions.
+- Reason:
+  - Better control of deterministic gameplay rules.
+  - Lower overhead than large numbers of dynamic collider/trigger interactions.
+  - Easier batching and service-level optimization in one tick pipeline.
+
+### Scaling to Thousands of Projectiles (Grid Path)
+
+Current broad-phase is cache-based; for much higher projectile counts, move to a spatial grid:
+
+- Partition battlefield into uniform cells (2D XZ grid).
+- Insert target entities into cells each tick (or incremental update).
+- For each projectile, query only current + neighboring cells instead of full team list.
+- Expected practical improvement: from near `O(P * C)` toward `O(P * k)` where `k` is local neighborhood occupancy.
+- Keep narrow-phase distance checks unchanged after grid candidate query.
+
 ## AI Flow (Agent Docs)
 
 If an AI agent works in this repository, start with these files in this order:
