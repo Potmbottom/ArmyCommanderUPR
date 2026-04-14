@@ -36,8 +36,6 @@ To complete a level, collect gold from combat and spend it at the army upgrade p
 - TextMeshPro (UI text)
 - Shader Graph (custom fireball shader)
 
-## Architecture Pattern
-
 ## Architecture
 
 ```mermaid
