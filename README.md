@@ -1,6 +1,8 @@
 # ArmyCommander
 https://play.google.com/store/apps/details?id=com.iu.armypioneer&hl=en (reference)
 
+Time: ~25 work hours(3 day) 
+(Visual is fully generic and made from available free unity assets)
 ArmyCommander is a 3D strategy-action game where the player builds barracks, gathers troops on a training field, gives attack orders, and clears enemy forces.
 To complete a level, collect gold from combat and spend it at the army upgrade point (blacksmith).
 
