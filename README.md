@@ -35,7 +35,6 @@ To complete a level, collect gold from combat and spend it at the army upgrade p
 - DOTween (lightweight visual tweens, e.g. drop rotation)
 - TextMeshPro (UI text)
 - Shader Graph (custom fireball shader)
-- MaterialPropertyBlock (per-renderer color overrides without material duplication)
 
 ## Architecture Pattern
 
